@@ -6,8 +6,8 @@ import 'package:organico_app/core/constants/size_constant.dart';
 class ButtonsW {
   static SizedBox buttonGreen(double width, double height, String child) {
     return SizedBox(
-      width: width,
-      height: height,
+      width: SizeConst.width(width),
+      height: SizeConst.height(height),
       child: ElevatedButton(
         child: Text(
           child,

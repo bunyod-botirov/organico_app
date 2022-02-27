@@ -6,6 +6,43 @@ import 'package:organico_app/provider/sign_in_provider.dart';
 import 'package:provider/provider.dart';
 
 class TextFieldW {
+  static SizedBox searchField(String label, {Widget? prefix, Widget? suffix}) {
+    return SizedBox(
+      width: SizeConst.width(374),
+      height: SizeConst.height(48),
+      child: TextFormField(
+        cursorColor: ColorsConst.pGreen,
+        textAlignVertical: TextAlignVertical.center,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.all(0),
+          filled: true,
+          fillColor: ColorsConst.tWhiteGrey,
+          prefixIcon: prefix,
+          suffixIcon: suffix,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          labelText: label,
+          labelStyle: TextStyle(
+            color: ColorsConst.tGrey,
+            fontSize: FontsConst.regularFont,
+            fontWeight: FontWeight.w700,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(SizeConst.width(100)),
+            ),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(SizeConst.width(100)),
+            ),
+            borderSide: BorderSide.none,
+          ),
+        ),
+      ),
+    );
+  }
+
   static SizedBox textForm(String label, {Widget? prefix, Widget? suffix}) {
     return SizedBox(
       width: SizeConst.width(374),

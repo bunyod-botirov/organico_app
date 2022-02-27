@@ -4,10 +4,17 @@ import 'package:organico_app/core/constants/fonts_constant.dart';
 
 class AppBarW {
   static AppBar appBar(
-      {Widget? leading, String? title, List<Widget>? actions}) {
+    BuildContext context, {
+    Widget? leading,
+    String? title,
+    List<Widget>? actions,
+  }) {
     return AppBar(
       elevation: 0,
-      leading: leading,
+      leading: InkWell(
+        child: leading,
+        onTap: () => Navigator.pop(context),
+      ),
       title: Text(
         title.toString(),
         style: TextStyle(
