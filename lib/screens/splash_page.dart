@@ -10,7 +10,7 @@ class SplashPage extends StatelessWidget {
     SizeConst().init(context);
     Future.delayed(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, "/sign_in"),
+      () => Navigator.pushReplacementNamed(context, "/bottom_navbar"),
     );
     return Scaffold(
       body: Center(
