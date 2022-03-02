@@ -21,7 +21,8 @@ class SignInPage extends StatelessWidget {
           child: Padding(
             padding: PaddingMarginConst.symmetricHorizontalPM,
             child: SizedBox(
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,4 +100,3 @@ class SignInPage extends StatelessWidget {
     );
   }
 }
-//94

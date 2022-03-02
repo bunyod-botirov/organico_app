@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:organico_app/screens/bottom_navbar.dart';
-import 'package:organico_app/screens/forgot_password_page.dart';
-import 'package:organico_app/screens/sign_in_page.dart';
+import 'package:organico_app/screens/auth/forgot_password_page.dart';
+import 'package:organico_app/screens/auth/sign_in_page.dart';
 import 'package:organico_app/screens/splash_page.dart';
 
 class AppRouter {

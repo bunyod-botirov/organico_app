@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
@@ -10,7 +11,11 @@ class SplashPage extends StatelessWidget {
     SizeConst().init(context);
     Future.delayed(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, "/sign_in"),
+      () {
+        FirebaseAuth.instance.currentUser == null
+            ? Navigator.pushReplacementNamed(context, "/sign_in")
+            : Navigator.pushReplacementNamed(context, "/bottom_navbar");
+      },
     );
     return Scaffold(
       body: Center(
