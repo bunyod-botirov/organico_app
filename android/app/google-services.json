@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "580593504280",
+    "project_id": "organico-cbdca",
+    "storage_bucket": "organico-cbdca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580593504280:android:88d4efcfeb12619fe3f36d",
+        "android_client_info": {
+          "package_name": "com.bunyodbotirov.organico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580593504280-mt9k3j2uqf1gprd5cbifb5jn6il1u344.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bunyodbotirov.organico",
+            "certificate_hash": "c8398c9d90a9e90bc066d8e6e4e8fc5082c9f8a8"
+          }
+        },
+        {
+          "client_id": "580593504280-u6nuj7k2vncbitidlbq9rmns99pn3lvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7jT65UeGDVhq8pxghBW1EiVm76SxcjQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580593504280-u6nuj7k2vncbitidlbq9rmns99pn3lvc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

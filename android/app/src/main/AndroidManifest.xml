@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.organico_app">
+    package="com.bunyodbotirov.organico">
    <application
         android:label="organico_app"
         android:name="${applicationName}"

@@ -15,7 +15,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        slivers: [
+        physics: const BouncingScrollPhysics(),
+        slivers: <Widget>[
           SliverToBoxAdapter(
             child: appBar(),
           ),
@@ -115,101 +116,92 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          // SliverToBoxAdapter(
-          //   child: ListTile(
-          //     contentPadding: PaddingMarginConst.symmetricHorizontalPM,
-          //     dense: true,
-          //     title: Text(
-          //       "Best Selling",
-          //       style: TextStyle(
-          //         fontSize: FontsConst.mediumFont,
-          //         color: ColorsConst.tBlack,
-          //         fontWeight: FontWeight.w700,
-          //       ),
-          //     ),
-          //     trailing: Text(
-          //       "See all",
-          //       style: TextStyle(
-          //         fontSize: FontsConst.smallFont,
-          //         color: ColorsConst.tDarkGrey,
-          //         fontWeight: FontWeight.w400,
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          // SliverFillRemaining(
-          //   child: ListView.separated(
-          //     physics: const BouncingScrollPhysics(),
-          //     itemCount: 10,
-          //     separatorBuilder: (BuildContext context, int index) {
-          //       return ListTile(
-          //         contentPadding: PaddingMarginConst.symmetricHorizontalPM,
-          //         dense: true,
-          //         title: Text(
-          //           "Best Selling",
-          //           style: TextStyle(
-          //             fontSize: FontsConst.mediumFont,
-          //             color: ColorsConst.tBlack,
-          //             fontWeight: FontWeight.w700,
-          //           ),
-          //         ),
-          //         trailing: Text(
-          //           "See all",
-          //           style: TextStyle(
-          //             fontSize: FontsConst.smallFont,
-          //             color: ColorsConst.tDarkGrey,
-          //             fontWeight: FontWeight.w400,
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //     itemBuilder: (BuildContext context, int index) {
-          //       return SizedBox(
-          //         height: SizeConst.height(242),
-          //         child: ListView.builder(
-          //           padding: PaddingMarginConst.symmetricHorizontalPM,
-          //           scrollDirection: Axis.horizontal,
-          //           itemCount: 10,
-          //           itemBuilder: (context, index) {
-          //             return Container(
-          //               width: SizeConst.width(196),
-          //               height: SizeConst.height(134),
-          //               padding: EdgeInsets.symmetric(
-          //                 horizontal: SizeConst.width(20),
-          //                 vertical: SizeConst.height(20),
-          //               ),
-          //               decoration: BoxDecoration(
-          //                 color: ColorsConst.pGreen,
-          //                 borderRadius:
-          //                     BorderRadius.circular(SizeConst.width(20)),
-          //               ),
-          //               child: Column(
-          //                 children: <Widget>[
-          //                   SvgPicture.asset(
-          //                     "assets/images/logo.svg",
-          //                     fit: BoxFit.contain,
-          //                     width: 200,
-          //                     height: 40,
-          //                   ),
-          //                   SizeConst.hBox(14),
-          //                   Text(
-          //                     "Something",
-          //                     style: TextStyle(
-          //                       fontFamily: "Poppins",
-          //                       fontSize: FontsConst.smallFont,
-          //                       color: ColorsConst.tBlack,
-          //                       fontWeight: FontWeight.w600,
-          //                     ),
-          //                   )
-          //                 ],
-          //               ),
-          //             );
-          //           },
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: SizeConst.height(25)),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return Column(
+                    children: <Widget>[
+                      ListTile(
+                        contentPadding:
+                            PaddingMarginConst.symmetricHorizontalPM,
+                        dense: true,
+                        title: Text(
+                          "Best Selling",
+                          style: TextStyle(
+                            fontSize: FontsConst.mediumFont,
+                            color: ColorsConst.tBlack,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        trailing: Text(
+                          "See all",
+                          style: TextStyle(
+                            fontSize: FontsConst.smallFont,
+                            color: ColorsConst.tDarkGrey,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConst.height(242),
+                        child: ListView.separated(
+                          padding: PaddingMarginConst.symmetricHorizontalPM,
+                          scrollDirection: Axis.horizontal,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: 10,
+                          separatorBuilder: (BuildContext context, int index) {
+                            return SizeConst.wBox(12);
+                          },
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              width: SizeConst.width(196),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: SizeConst.width(20),
+                                vertical: SizeConst.height(20),
+                              ),
+                              decoration: BoxDecoration(
+                                color: ColorsConst.pGreen,
+                                borderRadius:
+                                    BorderRadius.circular(SizeConst.width(20)),
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    "assets/images/logo.svg",
+                                    fit: BoxFit.contain,
+                                    width: 200,
+                                    height: 40,
+                                  ),
+                                  SizeConst.hBox(14),
+                                  Text(
+                                    "Something",
+                                    style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontSize: FontsConst.smallFont,
+                                      color: ColorsConst.tBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                },
+                childCount: 10,
+              ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                mainAxisExtent: SizeConst.height(305),
+                mainAxisSpacing: SizeConst.height(25),
+              ),
+            ),
+          ),
         ],
       ),
     );
