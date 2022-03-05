@@ -4,7 +4,7 @@ import 'package:organico_app/core/constants/colors_constant.dart';
 import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/padding_margin_const.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
-import 'package:organico_app/provider/sign_in_provider.dart';
+import 'package:organico_app/provider/sign_provider.dart';
 import 'package:organico_app/widgets/app_bar.dart';
 import 'package:organico_app/widgets/buttons.dart';
 import 'package:organico_app/widgets/text_form.dart';
@@ -18,10 +18,6 @@ class ForgotPasswordPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarW.appBar(
         context,
-        leading: SvgPicture.asset(
-          "assets/icons/arrow_back.svg",
-          fit: BoxFit.none,
-        ),
         title: "Forgot Password",
       ),
       body: SingleChildScrollView(
@@ -59,13 +55,13 @@ class ForgotPasswordPage extends StatelessWidget {
                 ),
                 SizeConst.hBox(32),
                 ChangeNotifierProvider(
-                  create: (context) => SignInProvider(),
+                  create: (context) => SignProvider(),
                   builder: (BuildContext context, Widget? child) {
                     return TextFieldW.textFormModified(context);
                   },
                 ),
                 SizeConst.hBox(79),
-                ButtonsW.buttonGreen(374, 52, "Next"),
+                ButtonsW.buttonGreen(374, 52, "Next", () {}),
               ],
             ),
           ),

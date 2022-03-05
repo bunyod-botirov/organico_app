@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:organico_app/core/constants/colors_constant.dart';
 import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
-import 'package:organico_app/provider/sign_in_provider.dart';
+import 'package:organico_app/provider/sign_provider.dart';
 import 'package:provider/provider.dart';
 
 class TextFieldW {
@@ -14,7 +14,9 @@ class TextFieldW {
         cursorColor: ColorsConst.pGreen,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(0),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: SizeConst.width(16),
+          ),
           filled: true,
           fillColor: ColorsConst.tWhiteGrey,
           prefixIcon: prefix,
@@ -43,17 +45,35 @@ class TextFieldW {
     );
   }
 
-  static SizedBox textForm(String label, {Widget? prefix, Widget? suffix}) {
+  static SizedBox textForm(
+    String label, {
+    TextEditingController? textController,
+    Widget? prefix,
+    Widget? suffix,
+    bool obscureText = false,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
     return SizedBox(
       width: SizeConst.width(374),
       height: SizeConst.height(48),
       child: TextFormField(
+        controller: textController,
         cursorColor: ColorsConst.pGreen,
         textAlignVertical: TextAlignVertical.center,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
+        style: TextStyle(
+          fontSize: FontsConst.regularFont,
+          color: ColorsConst.tDarkGrey,
+          fontWeight: FontWeight.w700,
+        ),
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(0),
-          prefixIcon: prefix,
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: SizeConst.width(16),
+          ),
           suffixIcon: suffix,
+          prefixIcon: prefix,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
           labelText: label,
           labelStyle: TextStyle(
             color: ColorsConst.tGrey,
@@ -107,7 +127,7 @@ class TextFieldW {
               borderRadius: BorderRadius.circular(SizeConst.width(30)),
             ),
             child: Text(
-              context.watch<SignInProvider>().popupValue,
+              context.watch<SignProvider>().popupValue,
               style: TextStyle(
                 color: ColorsConst.tBlack,
                 fontSize: FontsConst.regularFont,
@@ -139,7 +159,7 @@ class TextFieldW {
               ),
             ],
             onSelected: (value) {
-              context.read<SignInProvider>().changePopupValue(value);
+              context.read<SignProvider>().changePopupValue(value);
             },
           ),
         ),

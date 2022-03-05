@@ -4,7 +4,12 @@ import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
 
 class ButtonsW {
-  static SizedBox buttonGreen(double width, double height, String child) {
+  static SizedBox buttonGreen(
+    double width,
+    double height,
+    String child,
+    Function onPressed,
+  ) {
     return SizedBox(
       width: SizeConst.width(width),
       height: SizeConst.height(height),
@@ -19,13 +24,16 @@ class ButtonsW {
         ),
         style: ElevatedButton.styleFrom(
           primary: ColorsConst.pGreen,
+          onPrimary: ColorsConst.tWhite,
           shadowColor: Colors.transparent,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(SizeConst.width(100)),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          onPressed();
+        },
       ),
     );
   }

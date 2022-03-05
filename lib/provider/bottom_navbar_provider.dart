@@ -10,7 +10,7 @@ class BottomNavBarProvider extends ChangeNotifier {
     const HomePage(),
     const ExplorePage(),
     const CartPage(),
-    const ProfilePage(),
+     ProfilePage(),
   ];
 
   void changePages(int value) {
