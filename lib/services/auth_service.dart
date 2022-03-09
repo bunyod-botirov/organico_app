@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:organico_app/widgets/messenger_widget.dart';
 
 class AuthService {
   final FirebaseAuth _authUser = FirebaseAuth.instance;
@@ -14,13 +15,7 @@ class AuthService {
         await _authUser.signInWithCredential(credential);
       },
       verificationFailed: (FirebaseAuthException e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              e.message.toString(),
-            ),
-          ),
-        );
+        MessengerW.messenger(context, e.message!);
       },
       codeSent: (String verificationId, int? resendToken) async {
         await Navigator.pushNamed(
@@ -30,28 +25,44 @@ class AuthService {
         );
       },
       timeout: const Duration(minutes: 2),
-      
       codeAutoRetrievalTimeout: (String verificationId) {},
     );
   }
 
   void signUpWithGoogle() {}
 
-  void signIn(BuildContext context, String phoneNumber, String password) async {
+  Future signIn(
+      BuildContext context, String phoneNumber, String password) async {
     try {
-      await _authUser.signInWithPhoneNumber(phoneNumber).whenComplete(
-        () {
-          var data = _firestore.collection("users").doc(phoneNumber).get();
+      var userData = _firestore.collection("users").doc(phoneNumber).get().then(
+        (value) {
+          if (value.data()!["password"] == password) {
+            _authUser.verifyPhoneNumber(
+              phoneNumber: phoneNumber,
+              verificationCompleted: (PhoneAuthCredential credential) async {
+                // Android Only
+                await _authUser.signInWithCredential(credential);
+              },
+              verificationFailed: (FirebaseAuthException e) {
+                MessengerW.messenger(context, e.message!);
+              },
+              codeSent: (String verificationId, int? resendToken) async {
+                await Navigator.pushNamed(
+                  context,
+                  "/otp_page",
+                  arguments: verificationId,
+                );
+              },
+              timeout: const Duration(minutes: 2),
+              codeAutoRetrievalTimeout: (String verificationId) {},
+            );
+          } else {
+            MessengerW.messenger(context, "Email or Passwor was not correct!");
+          }
         },
       );
     } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            e.message.toString(),
-          ),
-        ),
-      );
+      MessengerW.messenger(context, e.message!);
     }
   }
 

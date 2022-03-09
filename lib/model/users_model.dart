@@ -12,7 +12,7 @@ class UsersModel {
     this.coupons,
     this.favourites,
     this.historyOfOrders,
-    this.currentOrders,
+    this.cart,
   });
 
   String? fullname;
@@ -25,7 +25,7 @@ class UsersModel {
   List<dynamic>? coupons;
   List<dynamic>? favourites;
   List<dynamic>? historyOfOrders;
-  List<dynamic>? currentOrders;
+  Cart? cart;
 
   factory UsersModel.fromJson(Map<String, dynamic> json) => UsersModel(
         fullname: json["fullname"],
@@ -39,6 +39,21 @@ class UsersModel {
         favourites: List<dynamic>.from(json["favourites"].map((x) => x)),
         historyOfOrders:
             List<dynamic>.from(json["historyOfOrders"].map((x) => x)),
-        currentOrders: List<dynamic>.from(json["currentOrders"].map((x) => x)),
+        cart: Cart.fromJson(json["cart"]),
+      );
+}
+
+class Cart {
+  Cart({
+    this.products,
+    this.counts,
+  });
+
+  List<dynamic>? products;
+  List<dynamic>? counts;
+
+  factory Cart.fromJson(Map<String, dynamic> json) => Cart(
+        products: List<dynamic>.from(json["products"].map((x) => x)),
+        counts: List<dynamic>.from(json["counts"].map((x) => x)),
       );
 }

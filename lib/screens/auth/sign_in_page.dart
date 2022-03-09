@@ -5,12 +5,16 @@ import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/padding_margin_const.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
 import 'package:organico_app/provider/sign_provider.dart';
-import 'package:organico_app/widgets/buttons.dart';
-import 'package:organico_app/widgets/text_form.dart';
+import 'package:organico_app/services/auth_service.dart';
+import 'package:organico_app/widgets/buttons_widget.dart';
+import 'package:organico_app/widgets/text_form_widget.dart';
 import 'package:provider/provider.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+  SignInPage({Key? key}) : super(key: key);
+
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +59,14 @@ class SignInPage extends StatelessWidget {
                         ),
                       ),
                       SizeConst.hBox(32),
-                      TextFieldW.textFormModified(context),
+                      TextFieldW.textFormModified(
+                        context,
+                        textController: _phoneController,
+                      ),
                       SizeConst.hBox(20),
                       TextFieldW.textForm(
                         "Password",
+                        textController: _passwordController,
                         prefix: SvgPicture.asset(
                           "assets/icons/lock.svg",
                           fit: BoxFit.none,
@@ -93,7 +101,23 @@ class SignInPage extends StatelessWidget {
                         ],
                       ),
                       SizeConst.hBox(44),
-                      ButtonsW.buttonGreen(374, 52, "Sign In", () {}),
+                      ButtonsW.buttonGreen(
+                        374,
+                        52,
+                        "Sign In",
+                        () async {
+                          await AuthService().signIn(
+                            context,
+                            _phoneController.text,
+                            _passwordController.text,
+                          );
+                          // Navigator.pushNamedAndRemoveUntil(
+                          //   context,
+                          //   "/bottom_navbar",
+                          //   (route) => false,
+                          // );
+                        },
+                      ),
                       SizeConst.hBox(16),
                       ButtonsW.buttonGreen(
                         374,

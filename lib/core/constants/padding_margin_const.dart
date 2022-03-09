@@ -5,6 +5,10 @@ class PaddingMarginConst {
   static EdgeInsets symmetricHorizontalPM = EdgeInsets.symmetric(
     horizontal: SizeConst.width(20),
   );
+  static EdgeInsets allHorizontalPM = EdgeInsets.symmetric(
+    horizontal: SizeConst.width(20),
+    vertical: SizeConst.height(20),
+  );
 
   static EdgeInsets kExtraSmallPM = const EdgeInsets.all(6);
   static EdgeInsets kSmallPM = const EdgeInsets.all(12);

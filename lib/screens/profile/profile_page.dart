@@ -7,7 +7,7 @@ import 'package:organico_app/core/constants/colors_constant.dart';
 import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
 import 'package:organico_app/services/auth_service.dart';
-import 'package:organico_app/widgets/list_tile.dart';
+import 'package:organico_app/widgets/list_tile_widget.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class ProfilePage extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
         ),
-        actions: [
+        actions: <Widget>[
           IconButton(
             icon: SvgPicture.asset(
               "assets/icons/notification.svg",
@@ -83,7 +83,9 @@ class ProfilePage extends StatelessWidget {
                       ),
                       SizeConst.hBox(8),
                       Text(
-                        _snapshot.data["phoneNumber"],
+                        _snapshot.data["phoneNumber"].isEmpty
+                            ? _snapshot.data["email"]
+                            : _snapshot.data["phoneNumber"],
                         style: TextStyle(
                           fontSize: FontsConst.mediumFont,
                           color: ColorsConst.tBlack,
@@ -140,7 +142,14 @@ class ProfilePage extends StatelessWidget {
                       ListTileW.listTile(
                         title: "Logout",
                         leading: "assets/images/exit.svg",
-                        onTap: () => AuthService().signOut(),
+                        onTap: () {
+                          AuthService().signOut();
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            "/splash",
+                            (route) => false,
+                          );
+                        },
                       ),
                     ],
                   ),

@@ -103,7 +103,10 @@ class TextFieldW {
     );
   }
 
-  static Row textFormModified(BuildContext context) {
+  static Row textFormModified(
+    BuildContext context, {
+    TextEditingController? textController,
+  }) {
     return Row(
       children: <Widget>[
         Container(
@@ -137,6 +140,7 @@ class TextFieldW {
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: "+1",
+
                 child: Text(
                   "+1",
                   style: TextStyle(
@@ -167,6 +171,7 @@ class TextFieldW {
           width: SizeConst.width(280),
           height: SizeConst.height(48),
           child: TextFormField(
+            controller: textController,
             cursorColor: ColorsConst.pGreen,
             textAlignVertical: TextAlignVertical.center,
             decoration: InputDecoration(

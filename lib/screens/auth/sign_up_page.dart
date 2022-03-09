@@ -7,9 +7,9 @@ import 'package:organico_app/core/constants/padding_margin_const.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
 import 'package:organico_app/provider/sign_provider.dart';
 import 'package:organico_app/services/auth_service.dart';
-import 'package:organico_app/widgets/app_bar.dart';
-import 'package:organico_app/widgets/buttons.dart';
-import 'package:organico_app/widgets/text_form.dart';
+import 'package:organico_app/widgets/app_bar_widget.dart';
+import 'package:organico_app/widgets/buttons_widget.dart';
+import 'package:organico_app/widgets/text_form_widget.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -172,7 +172,10 @@ class SignUpPage extends StatelessWidget {
                             "coupons": [],
                             "favourites": [],
                             "historyOfOrders": [],
-                            "currentOrders": [],
+                            "cart": {
+                              "products": [],
+                              "counts": [],
+                            },
                           },
                         ).then(
                           (value) => AuthService().signUpWithPhoneNumber(

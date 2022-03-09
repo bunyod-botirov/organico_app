@@ -5,9 +5,9 @@ import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/padding_margin_const.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
 import 'package:organico_app/provider/sign_provider.dart';
-import 'package:organico_app/widgets/app_bar.dart';
-import 'package:organico_app/widgets/buttons.dart';
-import 'package:organico_app/widgets/text_form.dart';
+import 'package:organico_app/widgets/app_bar_widget.dart';
+import 'package:organico_app/widgets/buttons_widget.dart';
+import 'package:organico_app/widgets/text_form_widget.dart';
 import 'package:provider/provider.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
