@@ -9,13 +9,15 @@ import 'package:organico_app/widgets/buttons_widget.dart';
 import 'package:organico_app/widgets/text_form_widget.dart';
 
 class OTPPage extends StatelessWidget {
-  OTPPage({Key? key, required this.verificationId}) : super(key: key);
+  OTPPage({Key? key, required this.datas}) : super(key: key);
 
   final TextEditingController _otpController = TextEditingController();
-  final String verificationId;
+  final List datas;
 
   @override
   Widget build(BuildContext context) {
+    final String verificationId = datas[0];
+    final String phone = datas[1];
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarW.appBar(
@@ -45,7 +47,7 @@ class OTPPage extends StatelessWidget {
               ),
             ),
             Text(
-              "+XXXXXXXXX",
+              phone,
               style: TextStyle(
                 fontSize: FontsConst.mediumFont,
                 color: ColorsConst.tBlack,
@@ -54,7 +56,7 @@ class OTPPage extends StatelessWidget {
             ),
             SizeConst.hBox(40),
             TextFieldW.textForm(
-              "6 Digit Code",
+              label: "6 Digit Code",
               textController: _otpController,
               keyboardType: TextInputType.number,
             ),

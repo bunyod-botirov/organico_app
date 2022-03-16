@@ -45,8 +45,8 @@ class TextFieldW {
     );
   }
 
-  static SizedBox textForm(
-    String label, {
+  static SizedBox textForm({
+    String? label,
     TextEditingController? textController,
     Widget? prefix,
     Widget? suffix,
@@ -64,7 +64,7 @@ class TextFieldW {
         keyboardType: keyboardType,
         style: TextStyle(
           fontSize: FontsConst.regularFont,
-          color: ColorsConst.tDarkGrey,
+          color: ColorsConst.tBlack,
           fontWeight: FontWeight.w700,
         ),
         decoration: InputDecoration(
@@ -140,7 +140,6 @@ class TextFieldW {
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: "+1",
-
                 child: Text(
                   "+1",
                   style: TextStyle(

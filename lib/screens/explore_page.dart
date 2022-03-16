@@ -137,7 +137,7 @@ class ExplorePage extends StatelessWidget {
                                 _user.favourites!.add(
                                   _products.all![index],
                                 );
-                                MessengerW.messenger(context,"Added");
+                                MessengerW.messenger(context, "Added");
                               },
                             ),
                           ],

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class SignProvider extends ChangeNotifier {
   String popupValue = "+998";
-  bool obsecureText = false;
+  bool obsecureText = true;
   bool termsOfUse = false;
 
   void changePopupValue(Object? value) {

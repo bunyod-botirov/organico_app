@@ -8,7 +8,7 @@ class UsersModel {
     this.joinTime,
     this.email,
     this.photo,
-    this.addresess,
+    this.address,
     this.coupons,
     this.favourites,
     this.historyOfOrders,
@@ -21,7 +21,7 @@ class UsersModel {
   Timestamp? joinTime;
   String? email;
   String? photo;
-  List<dynamic>? addresess;
+  String? address;
   List<dynamic>? coupons;
   List<dynamic>? favourites;
   List<dynamic>? historyOfOrders;
@@ -34,7 +34,7 @@ class UsersModel {
         joinTime: json["joinTime"],
         email: json["email"],
         photo: json["photo"],
-        addresess: List<dynamic>.from(json["addresess"].map((x) => x)),
+        address: json["addresess"],
         coupons: List<dynamic>.from(json["coupons"].map((x) => x)),
         favourites: List<dynamic>.from(json["favourites"].map((x) => x)),
         historyOfOrders:

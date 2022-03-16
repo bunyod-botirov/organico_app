@@ -377,7 +377,7 @@ class HomePage extends StatelessWidget {
                                     _user.favourites!.add(
                                       _products.types![index].builder![_index],
                                     );
-                                    MessengerW.messenger(context,"Added");
+                                    MessengerW.messenger(context, "Added");
                                   },
                                 )
                               ],

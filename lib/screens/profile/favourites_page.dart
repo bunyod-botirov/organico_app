@@ -48,7 +48,7 @@ class FavouritesPage extends StatelessWidget {
             ProductsModel _products = _snapshot.data![1];
 
             return GridView.builder(
-              itemCount: _products.all!.length,
+              itemCount: _user.favourites!.length,
               padding: EdgeInsets.all(SizeConst.width(20)),
               physics: const BouncingScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

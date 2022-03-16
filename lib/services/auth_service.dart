@@ -21,7 +21,7 @@ class AuthService {
         await Navigator.pushNamed(
           context,
           "/otp_page",
-          arguments: verificationId,
+          arguments: [verificationId, phoneNumber],
         );
       },
       timeout: const Duration(minutes: 2),
@@ -34,8 +34,8 @@ class AuthService {
   Future signIn(
       BuildContext context, String phoneNumber, String password) async {
     try {
-      var userData = _firestore.collection("users").doc(phoneNumber).get().then(
-        (value) {
+      _firestore.collection("users").doc(phoneNumber).get().then(
+        (DocumentSnapshot<Map<String, dynamic>> value) {
           if (value.data()!["password"] == password) {
             _authUser.verifyPhoneNumber(
               phoneNumber: phoneNumber,
@@ -50,7 +50,7 @@ class AuthService {
                 await Navigator.pushNamed(
                   context,
                   "/otp_page",
-                  arguments: verificationId,
+                  arguments: [verificationId, phoneNumber],
                 );
               },
               timeout: const Duration(minutes: 2),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-Map a = {
+Map structure = {
   "users": [
     {
       "fullname": "",
@@ -9,7 +9,7 @@ Map a = {
       "password": "",
       "photo": "",
       "joinedTime": Timestamp,
-      "addreses": <String>[],
+      "addreses": [],
       "coupons": [],
       "favourites": [],
       "historyOfOrders": [],
@@ -41,7 +41,7 @@ List<Color> containerColor = const [
   Color(0xFFFAFAFA),
 ];
 
-Map explore = {
+Map firestore = {
   "Categories": [
     {
       'name': 'Fruits',
@@ -935,6 +935,7 @@ Map explore = {
     },
   ],
 };
+
 Map model = {
   "Categories": [
     {

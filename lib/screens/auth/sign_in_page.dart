@@ -65,7 +65,7 @@ class SignInPage extends StatelessWidget {
                       ),
                       SizeConst.hBox(20),
                       TextFieldW.textForm(
-                        "Password",
+                        label: "Password",
                         textController: _passwordController,
                         prefix: SvgPicture.asset(
                           "assets/icons/lock.svg",

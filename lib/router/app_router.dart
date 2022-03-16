@@ -9,6 +9,8 @@ import 'package:organico_app/screens/home/coupons_page.dart';
 import 'package:organico_app/screens/home/product_page.dart';
 import 'package:organico_app/screens/home/search_page.dart';
 import 'package:organico_app/screens/home/types_page.dart';
+import 'package:organico_app/screens/profile/edit_profile_page.dart';
+import 'package:organico_app/screens/profile/favourites_page.dart';
 import 'package:organico_app/screens/splash_page.dart';
 
 class AppRouter {
@@ -29,7 +31,7 @@ class AppRouter {
         );
       case "/otp_page":
         return MaterialPageRoute(
-          builder: (context) => OTPPage(verificationId: args.toString()),
+          builder: (context) => OTPPage(datas: args as List),
         );
       case "/forgot_password":
         return MaterialPageRoute(
@@ -37,7 +39,7 @@ class AppRouter {
         );
       case "/reset_password":
         return MaterialPageRoute(
-          builder: (context) => const ResetPasswordPage(),
+          builder: (context) => ResetPasswordPage(),
         );
       case "/bottom_navbar":
         return MaterialPageRoute(
@@ -58,6 +60,14 @@ class AppRouter {
       case "/types":
         return MaterialPageRoute(
           builder: (context) => TypesPage(data: args as List),
+        );
+      case "/edit_profile":
+        return MaterialPageRoute(
+          builder: (context) => EditProfilePage(),
+        );
+      case "/favourites":
+        return MaterialPageRoute(
+          builder: (context) => const FavouritesPage(),
         );
     }
   }

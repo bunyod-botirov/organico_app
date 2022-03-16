@@ -59,7 +59,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     SizeConst.hBox(10),
                     TextFieldW.textForm(
-                      "Full Name",
+                      label: "Full Name",
                       textController: _nameController,
                     ),
                     SizeConst.hBox(16),
@@ -73,7 +73,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     SizeConst.hBox(10),
                     TextFieldW.textForm(
-                      "Phone Number",
+                      label: "Phone Number",
                       textController: _phoneController,
                       keyboardType: TextInputType.phone,
                     ),
@@ -88,7 +88,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     SizeConst.hBox(10),
                     TextFieldW.textForm(
-                      "Password",
+                      label: "Password",
                       textController: _passwordController,
                       suffix: InkWell(
                         child: SvgPicture.asset(
@@ -168,7 +168,7 @@ class SignUpPage extends StatelessWidget {
                             "joinTime": FieldValue.serverTimestamp(),
                             "email": "",
                             "photo": "",
-                            "addresess": [],
+                            "address": "",
                             "coupons": [],
                             "favourites": [],
                             "historyOfOrders": [],

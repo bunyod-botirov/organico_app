@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -64,14 +63,17 @@ class ProfilePage extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
-                      CircleAvatar(
-                        radius: SizeConst.width(85.5),
-                        child: _snapshot.data["photo"].isEmpty
-                            ? const Icon(Icons.person, size: 50)
-                            : CachedNetworkImage(
-                                imageUrl: _snapshot.data["photo"],
+                      _snapshot.data["photo"].isEmpty
+                          ? CircleAvatar(
+                              radius: SizeConst.width(85.5),
+                              child: const Icon(Icons.person, size: 50),
+                            )
+                          : CircleAvatar(
+                              radius: SizeConst.width(85.5),
+                              backgroundImage: NetworkImage(
+                                _snapshot.data["photo"],
                               ),
-                      ),
+                            ),
                       SizeConst.hBox(24),
                       Text(
                         _snapshot.data["fullname"],
@@ -96,6 +98,8 @@ class ProfilePage extends StatelessWidget {
                       ListTileW.listTile(
                         title: "Edit Profile",
                         leading: "assets/images/profile.svg",
+                        onTap: () =>
+                            Navigator.pushNamed(context, "/edit_profile"),
                       ),
                       ListTileW.listTile(
                         title: "My Orders",
@@ -104,24 +108,8 @@ class ProfilePage extends StatelessWidget {
                       ListTileW.listTile(
                         title: "My Wishlist",
                         leading: "assets/images/favourite.svg",
-                      ),
-                      ListTile(
-                        contentPadding: const EdgeInsets.all(0),
-                        leading: Image.asset("assets/images/location.png"),
-                        title: Text(
-                          "My Address",
-                          style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontSize: FontsConst.regularFont,
-                            color: ColorsConst.tBlack,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        trailing: SvgPicture.asset(
-                          "assets/icons/arrow_forward.svg",
-                          fit: BoxFit.none,
-                        ),
-                        onTap: () {},
+                        onTap: () =>
+                            Navigator.pushNamed(context, "/favourites"),
                       ),
                       ListTileW.listTile(
                         title: "Payment Method",

@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/bunyodbotirov/organico/BuildConfig.java
+ com.bunyodbotirov.organico.BuildConfig
+io/flutter/app/FlutterMultiDexApplication.java
+ io.flutter.app.FlutterMultiDexApplication
