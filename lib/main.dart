@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeComp.themeData,
-      onGenerateRoute: AppRouter().onGenerateRoute,
+      onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: "/splash",
     );
   }

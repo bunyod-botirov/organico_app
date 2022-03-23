@@ -16,6 +16,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthService().signOut();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -34,7 +35,7 @@ class ProfilePage extends StatelessWidget {
               fit: BoxFit.none,
             ),
             splashRadius: 1,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, "/notifications"),
           ),
         ],
       ),
@@ -104,6 +105,7 @@ class ProfilePage extends StatelessWidget {
                       ListTileW.listTile(
                         title: "My Orders",
                         leading: "assets/images/file.svg",
+                        onTap: () => Navigator.pushNamed(context, "/orders"),
                       ),
                       ListTileW.listTile(
                         title: "My Wishlist",
@@ -114,6 +116,8 @@ class ProfilePage extends StatelessWidget {
                       ListTileW.listTile(
                         title: "Payment Method",
                         leading: "assets/images/card.svg",
+                        onTap: () =>
+                            Navigator.pushNamed(context, "/payment_method"),
                       ),
                       ListTileW.listTile(
                         title: "Customer Service",

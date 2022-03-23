@@ -9,13 +9,18 @@ import 'package:organico_app/screens/home/coupons_page.dart';
 import 'package:organico_app/screens/home/product_page.dart';
 import 'package:organico_app/screens/home/search_page.dart';
 import 'package:organico_app/screens/home/types_page.dart';
+import 'package:organico_app/screens/profile/add_payment_page.dart';
 import 'package:organico_app/screens/profile/edit_profile_page.dart';
 import 'package:organico_app/screens/profile/favourites_page.dart';
+import 'package:organico_app/screens/profile/notifications_page.dart';
+import 'package:organico_app/screens/profile/orders_page.dart';
+import 'package:organico_app/screens/profile/payment_method_page.dart';
+import 'package:organico_app/screens/profile/settings_page.dart';
 import 'package:organico_app/screens/splash_page.dart';
 
 class AppRouter {
-  Route? onGenerateRoute(RouteSettings settings) {
-    Object? args = settings.arguments;
+  static Route? onGenerateRoute(RouteSettings settings) {
+    final Object? args = settings.arguments;
     switch (settings.name) {
       case "/splash":
         return MaterialPageRoute(
@@ -69,6 +74,27 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const FavouritesPage(),
         );
+      case "/orders":
+        return MaterialPageRoute(
+          builder: (context) => const OrdersPage(),
+        );
+      case "/notifications":
+        return MaterialPageRoute(
+          builder: (context) => const NotificationsPage(),
+        );
+      case "/settings":
+        return MaterialPageRoute(
+          builder: (context) => const SettingsPage(),
+        );
+      case "/payment_method":
+        return MaterialPageRoute(
+          builder: (context) => const PaymentMethodPage(),
+        );
+      case "/add_payment":
+        return MaterialPageRoute(
+          builder: (context) => const AddPaymentPage(),
+        );
     }
+    return null;
   }
 }

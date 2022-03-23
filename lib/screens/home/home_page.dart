@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               slivers: <Widget>[
                 SliverToBoxAdapter(
-                  child: appBar(),
+                  child: appBar(context),
                 ),
                 SliverToBoxAdapter(
                   child: ListTile(
@@ -182,7 +182,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SizedBox appBar() {
+  SizedBox appBar(BuildContext context) {
     return SizedBox(
       height: SizeConst.height(166),
       child: Column(
@@ -258,6 +258,10 @@ class HomePage extends StatelessWidget {
               color: ColorsConst.tGrey,
               fit: BoxFit.none,
             ),
+            enabling: true,
+            onTap: () {
+              Navigator.pushNamed(context, "/search");
+            },
           ),
         ],
       ),

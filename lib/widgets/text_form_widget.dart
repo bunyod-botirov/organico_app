@@ -6,11 +6,20 @@ import 'package:organico_app/provider/sign_provider.dart';
 import 'package:provider/provider.dart';
 
 class TextFieldW {
-  static SizedBox searchField(String label, {Widget? prefix, Widget? suffix}) {
+  static SizedBox searchField(
+    String label, {
+    Widget? prefix,
+    Widget? suffix,
+    TextEditingController? textController,
+    Function? onTap,
+    bool enabling = false,
+  }) {
     return SizedBox(
       width: SizeConst.width(374),
       height: SizeConst.height(48),
       child: TextFormField(
+        readOnly: enabling,
+        controller: textController,
         cursorColor: ColorsConst.pGreen,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
@@ -22,8 +31,8 @@ class TextFieldW {
           prefixIcon: prefix,
           suffixIcon: suffix,
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          labelText: label,
-          labelStyle: TextStyle(
+          hintText: label,
+          hintStyle: TextStyle(
             color: ColorsConst.tGrey,
             fontSize: FontsConst.regularFont,
             fontWeight: FontWeight.w700,
@@ -41,6 +50,7 @@ class TextFieldW {
             borderSide: BorderSide.none,
           ),
         ),
+        onTap: () => onTap!(),
       ),
     );
   }

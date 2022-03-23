@@ -5,29 +5,34 @@ import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/padding_margin_const.dart';
 import 'package:organico_app/core/constants/size_constant.dart';
 import 'package:organico_app/widgets/app_bar_widget.dart';
+import 'package:organico_app/widgets/buttons_widget.dart';
 
-class CouponsPage extends StatelessWidget {
-  const CouponsPage({Key? key}) : super(key: key);
+class PaymentMethodPage extends StatelessWidget {
+  const PaymentMethodPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarW.appBar(
         context,
-        title: "Your Coupon",
+        title: "Payment Method",
       ),
       body: Padding(
         padding: PaddingMarginConst.allPM,
         child: Column(
           children: <Widget>[
             ListTile(
+              contentPadding: const EdgeInsets.all(16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(SizeConst.width(12)),
+                side: BorderSide(
+                  color: ColorsConst.tLineDark,
+                  width: 1,
+                ),
               ),
-              tileColor: ColorsConst.pGreen.withOpacity(0.15),
-              leading: SvgPicture.asset("assets/images/coupon.svg"),
+              leading: SvgPicture.asset("assets/images/card.svg"),
               title: Text(
-                "15% Discount all item",
+                "Order Status",
                 style: TextStyle(
                   fontFamily: "Poppins",
                   fontSize: FontsConst.regularFont,
@@ -35,25 +40,21 @@ class CouponsPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              subtitle: Text(
-                "7 days remaining",
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: FontsConst.smallFont,
-                  color: ColorsConst.tGrey,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              trailing: SvgPicture.asset("assets/icons/arrow_forward.svg"),
             ),
             SizeConst.hBox(20),
             ListTile(
+              contentPadding: const EdgeInsets.all(16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(SizeConst.width(12)),
+                side: BorderSide(
+                  color: ColorsConst.tLineDark,
+                  width: 1,
+                ),
               ),
-              tileColor: ColorsConst.pGreen.withOpacity(0.15),
-              leading: SvgPicture.asset("assets/images/coupon.svg"),
+              leading: SvgPicture.asset("assets/images/paypal.svg"),
               title: Text(
-                "Free Shipping",
+                "PayPal",
                 style: TextStyle(
                   fontFamily: "Poppins",
                   fontSize: FontsConst.regularFont,
@@ -61,18 +62,16 @@ class CouponsPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              subtitle: Text(
-                "7 days remaining",
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: FontsConst.smallFont,
-                  color: ColorsConst.tGrey,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              trailing: SvgPicture.asset("assets/icons/arrow_forward.svg"),
             ),
           ],
         ),
+      ),
+      floatingActionButton: ButtonsW.buttonGreen(
+        374,
+        52,
+        "Add payment",
+        () => Navigator.pushNamed(context, "/add_payment"),
       ),
     );
   }

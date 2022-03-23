@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:organico_app/core/constants/colors_constant.dart';
 import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/padding_margin_const.dart';
@@ -16,7 +18,7 @@ class SignUpPage extends StatelessWidget {
   SignUpPage({Key? key}) : super(key: key);
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
+  final FirebaseAuth _authUser = FirebaseAuth.instance;
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -219,7 +221,44 @@ class SignUpPage extends StatelessWidget {
                                 BorderRadius.circular(SizeConst.width(100)),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          final GoogleSignInAccount? _googleUser =
+                              GoogleSignIn().currentUser;
+
+                          await AuthService().signInWithGoogle().whenComplete(
+                            () {
+                              _firestore
+                                  .collection("users")
+                                  .doc(_authUser.currentUser!.phoneNumber ??
+                                      _googleUser!.email)
+                                  .set(
+                                {
+                                  "fullname": _googleUser!.displayName,
+                                  "phoneNumber":
+                                      _authUser.currentUser!.phoneNumber,
+                                  "password": "",
+                                  "joinTime": FieldValue.serverTimestamp(),
+                                  "email": _googleUser.email,
+                                  "photo": _googleUser.photoUrl,
+                                  "address": "",
+                                  "coupons": [],
+                                  "favourites": [],
+                                  "historyOfOrders": [],
+                                  "cart": {
+                                    "products": [],
+                                    "counts": [],
+                                  },
+                                },
+                              ).then(
+                                (value) => Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  "/bottom_navbar",
+                                  (route) => false,
+                                ),
+                              );
+                            },
+                          );
+                        },
                       ),
                     ),
                   ],
