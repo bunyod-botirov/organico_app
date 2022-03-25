@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:organico_app/core/constants/colors_constant.dart';
 import 'package:organico_app/core/constants/fonts_constant.dart';
 import 'package:organico_app/core/constants/padding_margin_const.dart';
@@ -168,7 +167,6 @@ class SignUpPage extends StatelessWidget {
                             "phoneNumber": _phoneController.text,
                             "password": _passwordController.text,
                             "joinTime": FieldValue.serverTimestamp(),
-                            "email": "",
                             "photo": "",
                             "address": "",
                             "coupons": [],
@@ -222,24 +220,22 @@ class SignUpPage extends StatelessWidget {
                           ),
                         ),
                         onPressed: () async {
-                          final GoogleSignInAccount? _googleUser =
-                              GoogleSignIn().currentUser;
-
                           await AuthService().signInWithGoogle().whenComplete(
                             () {
                               _firestore
                                   .collection("users")
                                   .doc(_authUser.currentUser!.phoneNumber ??
-                                      _googleUser!.email)
+                                      _authUser.currentUser!.email)
                                   .set(
                                 {
-                                  "fullname": _googleUser!.displayName,
+                                  "fullname":
+                                      _authUser.currentUser!.displayName,
                                   "phoneNumber":
-                                      _authUser.currentUser!.phoneNumber,
+                                      _authUser.currentUser!.phoneNumber ??
+                                          _authUser.currentUser!.email,
                                   "password": "",
                                   "joinTime": FieldValue.serverTimestamp(),
-                                  "email": _googleUser.email,
-                                  "photo": _googleUser.photoUrl,
+                                  "photo": "",
                                   "address": "",
                                   "coupons": [],
                                   "favourites": [],

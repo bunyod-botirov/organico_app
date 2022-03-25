@@ -16,7 +16,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthService().signOut();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -45,7 +44,8 @@ class ProfilePage extends StatelessWidget {
         child: FutureBuilder(
           future: _firestore
               .collection("users")
-              .doc(_authUser.currentUser!.phoneNumber)
+              .doc(_authUser.currentUser!.phoneNumber ??
+                  _authUser.currentUser!.email)
               .get(),
           builder: (BuildContext context, AsyncSnapshot _snapshot) {
             if (!_snapshot.hasData) {
